@@ -5,15 +5,20 @@ class ConexaoBanco {
         /*
         Código para criar ou abrir o arquivo .db da lojinha
         */
+       this.db = new Database('loja.db');
       this._criarTabela();
     }
 
     _criarTabela() {
         // Define a estrutura da tabela de produtos
         const sql = 
-          /*
-          Comando SQL para criar a tabela "produtos"
-          */
+        `CREATE TABLE IF NOT EXISTS produtos (
+             id INTEGER PRIMARY KEY AUTOINCREMENT,
+             nome  TEXT NOT NULL,
+             preco REAL NOT NULL,
+             quantidade INTEGER NOT NULL
+             )`;
+
         this.db.prepare(sql).run();
     }
 }
